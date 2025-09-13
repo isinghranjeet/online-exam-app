@@ -1,0 +1,279 @@
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, #0f0f0f 0%, #000000 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.loaderContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+    rgba(229, 9, 20, 0.15) 0%, 
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.loaderContainer.hovered::before {
+  opacity: 1;
+}
+
+/* Background animation wrapper left empty */
+/* Removed floatingShapes and pulseWaves styles */
+
+/* Content styling */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.netflixIcon {
+  display: flex;
+  gap: 4px;
+  height: 60px;
+}
+
+.iconBar {
+  width: 16px;
+  height: 100%;
+  background: #e50914;
+  transform-origin: bottom;
+  animation: iconGrow 0.8s ease-out backwards;
+}
+
+.iconBar:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.iconBar:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.iconBar:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes iconGrow {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+.logoText {
+  display: flex;
+  gap: 2px;
+}
+
+.logoLetter {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #e50914;
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+  opacity: 0;
+  animation: letterReveal 0.5s ease-out var(--delay) forwards;
+}
+
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateX(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+/* Progress section */
+.progressSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: 280px;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #e50914, #ff5252);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progressGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s infinite;
+  transform: translateX(-100%);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.progressText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.hintText {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  animation: pulseHint 2s infinite;
+}
+
+@keyframes pulseHint {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Particles */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--size);
+  height: var(--size);
+  background: #e50914;
+  border-radius: 50%;
+  opacity: 0;
+  animation: 
+    particleFloat var(--duration) var(--delay) infinite ease-in-out,
+    particleFade var(--duration) var(--delay) infinite alternate;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(0) translateY(0);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg) translateX(var(--distance)) translateY(calc(var(--distance) * 0.5));
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(0) translateY(calc(var(--distance) * 1));
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg) translateX(calc(var(--distance) * -1)) translateY(calc(var(--distance) * 0.5));
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(0) translateY(0);
+  }
+}
+
+@keyframes particleFade {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .logoLetter {
+    font-size: 2rem;
+  }
+  
+  .netflixIcon {
+    height: 50px;
+  }
+  
+  .iconBar {
+    width: 14px;
+  }
+  
+  .progressSection {
+    width: 240px;
+  }
+  
+  /* Removed pulseWave styles */
+}
+
+@media (max-width: 480px) {
+  .logoLetter {
+    font-size: 1.6rem;
+  }
+  
+  .netflixIcon {
+    height: 40px;
+  }
+  
+  .iconBar {
+    width: 12px;
+  }
+  
+  .progressSection {
+    width: 200px;
+  }
+  
+  .hintText {
+    font-size: 0.8rem;
+  }
+}
