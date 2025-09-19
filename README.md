@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🌐 Online Exam Platform
+Live Demo: here
 
-## Getting Started
+An Online Exam Platform built with Next.js, enabling instructors to create exams and students to take them — with timer, result tracking, and real-time feedback.
 
-First, run the development server:
+✨ Features
+✅ User roles: Instructor & Student
 
-```bash
+🗂 Create, edit, and delete exams (questions, answers)
+
+⏱ Timed exams with countdown timer
+
+🧮 Auto-grading & immediate feedback
+
+📊 Score summaries and exam history
+
+📱 Responsive UI — works on mobile and desktop
+
+📂 Project Structure
+online-exam-app/
+├── app/                     # Pages / Routes (Next.js)
+├── components/              # Reusable UI components
+├── public/                  # Static assets (images, icons)
+├── styles/                  # Global & component styling
+├── utils/                   # Helper functions
+├── data/ or backend/API      # Where exam data / user data stored / fetched
+├── package.json
+└── README.md
+🛠 Setup & Run Locally
+# Clone the repo
+git clone <your-repo-url>
+cd online-exam-app
+
+# Install dependencies
+npm install
+# or
+yarn
+
+# Run in development mode
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Open
+http://localhost:3000
+🚀 Deployment
+Deployed live via Vercel — automatic when pushing to the main branch.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📸 Screenshots
+(Add some screenshots here to show the UI like login page, exam interface, results page.)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔮 Future Enhancements
+Authentication & authorization (JWT, NextAuth)
 
-## Learn More
+Better UI themes / dark mode
 
-To learn more about Next.js, take a look at the following resources:
+Timer pausing / resuming
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Analytics: average score, question item analysis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Real-time proctoring or webcam monitoring
