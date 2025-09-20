@@ -44,8 +44,6 @@ http://localhost:3000
 🚀 Deployment
 Deployed live via Vercel — automatic when pushing to the main branch.
 
-📸 Screenshots
-(Add some screenshots here to show the UI like login page, exam interface, results page.)
 
 🔮 Future Enhancements
 Authentication & authorization (JWT, NextAuth)
